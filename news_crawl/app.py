@@ -41,4 +41,5 @@ def home():
 
 # Flask 실행
 if __name__ == "__main__":
+    from news_crawl import routes
     app.run(debug=True)
