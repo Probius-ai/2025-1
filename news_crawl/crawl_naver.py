@@ -6,7 +6,7 @@ import schedule
 import time
 
 # 뉴스 파일 저장 폴더 설정
-NEWS_DIR = "news_data"
+NEWS_DIR = "news_crawl/news_data"
 if not os.path.exists(NEWS_DIR):
     os.makedirs(NEWS_DIR)
 
@@ -27,8 +27,8 @@ def crawl_news():
     # 뉴스 제목 가져오기
     titles = soup.select(".sa_text_strong")
 
-    # 날짜별 파일명 생성
-    today = time.strftime('%Y-%m-%d')
+    # 날짜와 시간별 파일명 생성 (시간 단위 포함)
+    today = time.strftime('%Y-%m-%d_%H')
     filename = os.path.join(NEWS_DIR, f"news_{today}.csv")
 
     # CSV 파일로 저장
@@ -42,7 +42,7 @@ def crawl_news():
             writer.writerow([idx, news_title, news_link])
 
     print(f"✅ 뉴스 크롤링 완료! ({len(titles)}개 뉴스 저장됨)")
-    with open("log.txt", "a", encoding="utf-8") as log_file:
+    with open("news_crawl/log.txt", "a", encoding="utf-8") as log_file:
         log_file.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] 뉴스 크롤링 완료! 파일: {filename}\n")
 
 # 💡 10분마다 실행되도록 설정
