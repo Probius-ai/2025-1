@@ -16,6 +16,14 @@
 </head>
 <body>
     <h1>📰 크롤링한 뉴스</h1>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">뉴스 사이트</a>
+            <form action="{{ url_for('routes.logout') }}" method="POST">
+                <button type="submit" class="btn btn-danger">로그아웃</button>
+            </form>
+        </div>
+    </nav>
     <table>
         <thead>
             <tr>

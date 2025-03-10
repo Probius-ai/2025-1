@@ -46,7 +46,7 @@ def crawl_news():
         log_file.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] 뉴스 크롤링 완료! 파일: {filename}\n")
 
 # 💡 10분마다 실행되도록 설정
-schedule.every(1).minutes.do(crawl_news)
+schedule.every(30).minutes.do(crawl_news)
 
 # 무한 루프 실행 (계속 동작)
 print("⏳ 자동 크롤링 시작! (Ctrl + C로 종료 가능)")
